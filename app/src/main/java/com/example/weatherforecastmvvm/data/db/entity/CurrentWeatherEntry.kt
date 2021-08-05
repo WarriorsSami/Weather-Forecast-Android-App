@@ -23,8 +23,6 @@ data class CurrentWeatherEntry(
     @SerializedName("uv_index")
     val uvIndex: Double,
     val visibility: Double,
-    @SerializedName("weather_code")
-    val weatherCode: Double,
     @SerializedName("weather_descriptions")
     val weatherDescriptions: List<String>,
     @SerializedName("weather_icons")
