@@ -10,6 +10,7 @@ import org.kodein.di.bindings.WithContext
 import org.threeten.bp.ZonedDateTime
 import java.util.*
 
+@DelicateCoroutinesApi
 class ForecastRepositoryImpl(
     private val currentWeatherDAO: CurrentWeatherDAO,
     private val weatherNetworkDataSource: WeatherNetworkDataSource
