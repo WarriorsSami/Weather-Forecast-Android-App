@@ -5,7 +5,7 @@ import androidx.room.ColumnInfo
 data class MetricCurrentWeatherEntry (
     @ColumnInfo(name = "cloudcover")
     override val cloudCover: Double,
-    @ColumnInfo(name = "feelslike")
+    @ColumnInfo(name = "feelslike") // add imperial version (F)
     override val feelsLike: Double,
     @ColumnInfo(name = "humidity")
     override val humidity: Double,
@@ -13,25 +13,23 @@ data class MetricCurrentWeatherEntry (
     override val isDay: String,
     @ColumnInfo(name = "observationTime")
     override val observationTime: String,
-    @ColumnInfo(name = "precip")
+    @ColumnInfo(name = "precip") // add imperial version (in)
     override val precipitation: Double,
-    @ColumnInfo(name = "pressure")
+    @ColumnInfo(name = "pressure") // add imperial version (PSI)
     override val pressure: Double,
-    @ColumnInfo(name = "temperature")
+    @ColumnInfo(name = "temperature") // add imperial version (F)
     override val temperature: Double,
     @ColumnInfo(name = "uvIndex")
     override val uvIndex: Double,
-    @ColumnInfo(name = "visibility")
+    @ColumnInfo(name = "visibility") // add imperial version (miles)
     override val visibility: Double,
     @ColumnInfo(name = "weatherDescriptions")
     override val weatherDescriptions: List<String>,
     @ColumnInfo(name = "weatherIcons")
     override val weatherIcons: List<String>,
-    @ColumnInfo(name = "windDegree")
-    override val windDegree: Double,
     @ColumnInfo(name = "windDir")
     override val windDirection: String,
-    @ColumnInfo(name = "windSpeed")
+    @ColumnInfo(name = "windSpeed") // add imperial version (mph)
     override val windSpeed: Double
 
 ): UnitSpecificCurrentWeatherEntry

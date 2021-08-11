@@ -7,7 +7,7 @@ import com.example.weatherforecastmvvm.data.db.entity.CurrentWeatherEntry
 
 @Database (
     entities = [CurrentWeatherEntry::class],
-    version = 1
+    version = 2
 )
 @TypeConverters(Converters::class)
 abstract class ForecastDatabase: RoomDatabase() {
@@ -25,6 +25,7 @@ abstract class ForecastDatabase: RoomDatabase() {
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(context.applicationContext,
                 ForecastDatabase::class.java, "forecast.db")
+                .fallbackToDestructiveMigration()
                 .build()
     }
 }

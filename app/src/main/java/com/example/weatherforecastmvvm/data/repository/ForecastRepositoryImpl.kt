@@ -3,10 +3,10 @@ package com.example.weatherforecastmvvm.data.repository
 import androidx.lifecycle.LiveData
 import com.example.weatherforecastmvvm.data.db.CurrentWeatherDAO
 import com.example.weatherforecastmvvm.data.db.unitlocalized.UnitSpecificCurrentWeatherEntry
+import com.example.weatherforecastmvvm.data.db.unitlocalized.convertToImperial
 import com.example.weatherforecastmvvm.data.network.WeatherNetworkDataSource
 import com.example.weatherforecastmvvm.data.network.response.CurrentWeatherResponse
 import kotlinx.coroutines.*
-import org.kodein.di.bindings.WithContext
 import org.threeten.bp.ZonedDateTime
 import java.util.*
 
@@ -26,13 +26,20 @@ class ForecastRepositoryImpl(
         return withContext(Dispatchers.IO) {
             initWeatherData()
             return@withContext currentWeatherDAO.getWeatherMetric()
+            // TODO Get somehow Weather Imperial Form
+            /*
+                if (metric) currentWeatherDAO.getWeatherMetric()
+                else currentWeatherDAO.getWeatherMetric().also {
+                    it.postValue(convertToImperial(it))
+                }
+             */
         }
     }
 
     @DelicateCoroutinesApi
-    private fun persistFetchedCurrentWeather(fetcheCurrentWeather: CurrentWeatherResponse) {
+    private fun persistFetchedCurrentWeather(fetchedCurrentWeather: CurrentWeatherResponse) {
         GlobalScope.launch(Dispatchers.IO) {
-            currentWeatherDAO.upsert(fetcheCurrentWeather.currentWeatherEntry)
+            currentWeatherDAO.upsert(fetchedCurrentWeather.currentWeatherEntry)
         }
     }
 
