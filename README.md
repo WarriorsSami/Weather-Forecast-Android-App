@@ -2,4 +2,4 @@
 Weather Forecast Mobile App for Android implemented via Koltin dedicated packages
 
 
-![](ezgif-3-07f39296f0cb.gif)
+![](ezgif.com-gif-maker.gif)
