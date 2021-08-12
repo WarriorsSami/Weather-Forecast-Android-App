@@ -1,30 +1,26 @@
 package com.example.weatherforecastmvvm.data.db.unitlocalized
 
-import androidx.lifecycle.LiveData
+import com.example.weatherforecastmvvm.data.db.entity.CurrentWeatherEntry
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-fun convertToImperial(weatherLiveData: LiveData<MetricCurrentWeatherEntry>): MetricCurrentWeatherEntry? {
-    val weather = weatherLiveData.value
-    if (weather != null) {
-        return MetricCurrentWeatherEntry(
-            weather.cloudCover,
-            convertToFahrenheit(weather.feelsLike),
-            weather.humidity,
-            weather.isDay,
-            weather.observationTime,
-            convertToInches(weather.precipitation),
-            convertToPSI(weather.pressure),
-            convertToFahrenheit(weather.temperature),
-            weather.uvIndex,
-            convertToMiles(weather.visibility),
-            weather.weatherDescriptions,
-            weather.weatherIcons,
-            weather.windDirection,
-            convertToMPH(weather.windSpeed)
-        )
-    }
-    return null
+fun convertToImperial(weather: CurrentWeatherEntry): MetricCurrentWeatherEntry {
+    return MetricCurrentWeatherEntry(
+        weather.cloudcover,
+        convertToFahrenheit(weather.feelslike),
+        weather.humidity,
+        weather.isDay,
+        weather.observationTime,
+        convertToInches(weather.precip),
+        convertToPSI(weather.pressure),
+        convertToFahrenheit(weather.temperature),
+        weather.uvIndex,
+        convertToMiles(weather.visibility),
+        weather.weatherDescriptions,
+        weather.weatherIcons,
+        weather.windDir,
+        convertToMPH(weather.windSpeed)
+    )
 }
 
 fun convertToFahrenheit(value: Double): Double {
@@ -48,7 +44,7 @@ fun convertToMPH(value: Double): Double {
 }
 
 fun roundOffDecimal(number: Double): Double {
-    val df = DecimalFormat("#.##")
+    val df = DecimalFormat("#.#")
     df.roundingMode = RoundingMode.CEILING
     return df.format(number).toDouble()
 }

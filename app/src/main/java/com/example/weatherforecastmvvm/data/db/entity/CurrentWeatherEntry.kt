@@ -12,17 +12,22 @@ const val CURRENT_WEATHER_ID = 0
 data class CurrentWeatherEntry(
     val cloudcover: Double,
     val feelslike: Double,
+    val feelslikeImperial: Double,
     val humidity: Double,
     @SerializedName("is_day")
     val isDay: String,
     @SerializedName("observation_time")
     val observationTime: String,
     val precip: Double,
+    val precipImperial: Double,
     val pressure: Double,
+    val pressureImperial: Double,
     val temperature: Double,
+    val temperatureImperial: Double,
     @SerializedName("uv_index")
     val uvIndex: Double,
     val visibility: Double,
+    val visibilityImperial: Double,
     @SerializedName("weather_descriptions")
     val weatherDescriptions: List<String>,
     @SerializedName("weather_icons")
@@ -30,7 +35,8 @@ data class CurrentWeatherEntry(
     @SerializedName("wind_dir")
     val windDir: String,
     @SerializedName("wind_speed")
-    val windSpeed: Double
+    val windSpeed: Double,
+    val windSpeedImperial: Double
 ) {
     @PrimaryKey(autoGenerate = false)
     var id: Int = CURRENT_WEATHER_ID

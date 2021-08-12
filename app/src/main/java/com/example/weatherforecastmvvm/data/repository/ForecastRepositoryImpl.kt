@@ -25,21 +25,23 @@ class ForecastRepositoryImpl(
     override suspend fun getCurrentWeather(metric: Boolean): LiveData<out UnitSpecificCurrentWeatherEntry> {
         return withContext(Dispatchers.IO) {
             initWeatherData()
-            return@withContext currentWeatherDAO.getWeatherMetric()
-            // TODO Get somehow Weather Imperial Form
-            /*
-                if (metric) currentWeatherDAO.getWeatherMetric()
-                else currentWeatherDAO.getWeatherMetric().also {
-                    it.postValue(convertToImperial(it))
-                }
-             */
+            return@withContext if (metric) currentWeatherDAO.getWeatherMetric() else currentWeatherDAO.getWeatherImperial()
         }
     }
 
     @DelicateCoroutinesApi
     private fun persistFetchedCurrentWeather(fetchedCurrentWeather: CurrentWeatherResponse) {
         GlobalScope.launch(Dispatchers.IO) {
+            val weatherImperial = convertToImperial(fetchedCurrentWeather.currentWeatherEntry)
             currentWeatherDAO.upsert(fetchedCurrentWeather.currentWeatherEntry)
+            currentWeatherDAO.updateWeatherImperial(
+                weatherImperial.feelsLike,
+                weatherImperial.precipitation,
+                weatherImperial.pressure,
+                weatherImperial.temperature,
+                weatherImperial.visibility,
+                weatherImperial.windSpeed
+            )
         }
     }
 

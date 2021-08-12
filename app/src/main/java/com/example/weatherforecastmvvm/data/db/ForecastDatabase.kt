@@ -7,7 +7,7 @@ import com.example.weatherforecastmvvm.data.db.entity.CurrentWeatherEntry
 
 @Database (
     entities = [CurrentWeatherEntry::class],
-    version = 2
+    version = 4
 )
 @TypeConverters(Converters::class)
 abstract class ForecastDatabase: RoomDatabase() {
