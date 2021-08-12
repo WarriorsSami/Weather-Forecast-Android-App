@@ -244,16 +244,18 @@
         android:id="@+id/textView_observation_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="652dp"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_condition"
-        tools:text="Observation Time: 9:30 PM" />
+        tools:text="Observation Time: 9:30 PM"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="8dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
