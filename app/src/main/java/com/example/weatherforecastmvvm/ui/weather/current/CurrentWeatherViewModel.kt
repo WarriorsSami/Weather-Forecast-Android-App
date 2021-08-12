@@ -9,7 +9,7 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 class CurrentWeatherViewModel(
     private val forecastRepository: ForecastRepository
 ): ViewModel() {
-    private val unitSystem = UnitSystem.IMPERIAL
+    private val unitSystem = UnitSystem.METRIC
 
     val isMetric: Boolean
         get() = unitSystem == UnitSystem.METRIC
