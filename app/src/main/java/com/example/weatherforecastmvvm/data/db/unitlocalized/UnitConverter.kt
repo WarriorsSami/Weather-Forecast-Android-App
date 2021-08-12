@@ -1,8 +1,7 @@
 package com.example.weatherforecastmvvm.data.db.unitlocalized
 
 import com.example.weatherforecastmvvm.data.db.entity.CurrentWeatherEntry
-import java.math.RoundingMode
-import java.text.DecimalFormat
+
 
 fun convertToImperial(weather: CurrentWeatherEntry): MetricCurrentWeatherEntry {
     return MetricCurrentWeatherEntry(
@@ -44,7 +43,5 @@ fun convertToMPH(value: Double): Double {
 }
 
 fun roundOffDecimal(number: Double): Double {
-    val df = DecimalFormat("#.#")
-    df.roundingMode = RoundingMode.CEILING
-    return df.format(number).toDouble()
+    return Math.round(number * 10.0) / 10.0
 }

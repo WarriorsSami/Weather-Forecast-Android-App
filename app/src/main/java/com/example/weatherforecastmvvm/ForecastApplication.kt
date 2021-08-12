@@ -3,6 +3,8 @@ package com.example.weatherforecastmvvm
 import android.app.Application
 import com.example.weatherforecastmvvm.data.db.ForecastDatabase
 import com.example.weatherforecastmvvm.data.network.*
+import com.example.weatherforecastmvvm.data.provider.UnitSystemProvider
+import com.example.weatherforecastmvvm.data.provider.UnitSystemProviderImpl
 import com.example.weatherforecastmvvm.data.repository.ForecastRepository
 import com.example.weatherforecastmvvm.data.repository.ForecastRepositoryImpl
 import com.example.weatherforecastmvvm.ui.weather.current.CurrentWeatherViewModelFactory
@@ -28,7 +30,8 @@ class ForecastApplication: Application(), KodeinAware {
         bind() from singleton { WeatherStackAPIService(instance()) }
         bind<WeatherNetworkDataSource>() with singleton { WeatherNetworkDataSourceImpl(instance()) }
         bind<ForecastRepository>() with singleton { ForecastRepositoryImpl(instance(), instance()) }
-        bind() from provider { CurrentWeatherViewModelFactory(instance()) }
+        bind<UnitSystemProvider>() with singleton { UnitSystemProviderImpl(instance()) }
+        bind() from provider { CurrentWeatherViewModelFactory(instance(), instance()) }
     }
 
     override fun onCreate() {
