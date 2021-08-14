@@ -46,6 +46,13 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
     @DelicateCoroutinesApi
     private fun bindUI() = launch {
         val currentWeather = viewModel.weather.await()
+        val weatherLocation = viewModel.weatherLocation.await()
+
+        weatherLocation.observe(viewLifecycleOwner, Observer { location ->
+            if (location == null) return@Observer
+
+            updateLocation(location.name)
+        })
 
         currentWeather.observe(viewLifecycleOwner, Observer {
             if (it == null) return@Observer
@@ -53,7 +60,6 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
             val groupLoading = activity?.findViewById<Group>(R.id.group_loading)
             groupLoading?.visibility = View.GONE
 
-            updateLocation("Calafat")
             updateDateToToday()
             updateTemperatures(it.temperature, it.feelsLike)
             updatePrecipitation(it.precipitation)
@@ -142,7 +148,7 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
 
     private fun updateObservationTime(time: String) {
         val observationTimeView = activity?.findViewById<TextView>(R.id.textView_observation_time)
-        observationTimeView?.text = "Observation Time: $time"
+        observationTimeView?.text = "Observation Time: $time UTC+/-0"
     }
 
     private fun updateWeatherDescription(description: List<String>) {
