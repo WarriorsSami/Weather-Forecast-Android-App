@@ -1,6 +1,7 @@
 package com.example.weatherforecastmvvm
 
 import android.app.Application
+import android.content.Context
 import com.example.weatherforecastmvvm.data.db.ForecastDatabase
 import com.example.weatherforecastmvvm.data.network.*
 import com.example.weatherforecastmvvm.data.provider.LocationProvider
@@ -10,6 +11,8 @@ import com.example.weatherforecastmvvm.data.provider.UnitSystemProviderImpl
 import com.example.weatherforecastmvvm.data.repository.ForecastRepository
 import com.example.weatherforecastmvvm.data.repository.ForecastRepositoryImpl
 import com.example.weatherforecastmvvm.ui.weather.current.CurrentWeatherViewModelFactory
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.jakewharton.threetenabp.AndroidThreeTen
 import kotlinx.coroutines.DelicateCoroutinesApi
 import org.kodein.di.Kodein
@@ -32,10 +35,11 @@ class ForecastApplication: Application(), KodeinAware {
         bind<ConnectivityInterceptor>() with singleton { ConnectivityInterceptorImpl(instance()) }
         bind() from singleton { WeatherStackAPIService(instance()) }
         bind<WeatherNetworkDataSource>() with singleton { WeatherNetworkDataSourceImpl(instance()) }
-        bind<LocationProvider>() with singleton { LocationProviderImpl() }
+        bind<LocationProvider>() with singleton { LocationProviderImpl(instance(), instance()) }
         bind<ForecastRepository>() with singleton { ForecastRepositoryImpl(instance(), instance(), instance(), instance()) }
         bind<UnitSystemProvider>() with singleton { UnitSystemProviderImpl(instance()) }
         bind() from provider { CurrentWeatherViewModelFactory(instance(), instance()) }
+        bind() from provider { LocationServices.getFusedLocationProviderClient(instance<Context>()) }
 
     }
 

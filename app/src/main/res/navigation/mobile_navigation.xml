@@ -8,12 +8,12 @@
     <fragment
         android:id="@+id/currentWeatherFragment"
         android:name="com.example.weatherforecastmvvm.ui.weather.current.CurrentWeatherFragment"
-        android:label="current_weather_fragment"
+        android:label="Current Weather"
         tools:layout="@layout/current_weather_fragment" />
     <fragment
         android:id="@+id/futureListWeatherFragment"
         android:name="com.example.weatherforecastmvvm.ui.weather.future.list.FutureListWeatherFragment"
-        android:label="future_list_weather_fragment"
+        android:label="Future List Weather"
         tools:layout="@layout/future_list_weather_fragment" >
         <action
             android:id="@+id/actionDetail"
@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/futureDetailWeatherFragment"
         android:name="com.example.weatherforecastmvvm.ui.weather.future.detail.FutureDetailWeatherFragment"
-        android:label="future_detail_weather_fragment"
+        android:label="Future Detail Weather"
         tools:layout="@layout/future_detail_weather_fragment" >
         <argument
             android:name="dateString"

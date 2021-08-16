@@ -2,7 +2,7 @@ package com.example.weatherforecastmvvm.data.network
 
 import android.content.Context
 import android.net.ConnectivityManager
-import com.example.weatherforecastmvvm.internal.NoConnectivityException
+import com.example.weatherforecastmvvm.internal.NoInternetConnectionException
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -15,7 +15,7 @@ class ConnectivityInterceptorImpl (
 
     override fun intercept(chain: Interceptor.Chain): Response {
         if (!isOnline())
-            throw NoConnectivityException()
+            throw NoInternetConnectionException()
         return chain.proceed(chain.request())
     }
 
