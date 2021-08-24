@@ -30,6 +30,8 @@ data class MetricCurrentWeatherEntry (
     @ColumnInfo(name = "windDir")
     override val windDirection: String,
     @ColumnInfo(name = "windSpeed") // add imperial version (mph)
-    override val windSpeed: Double
+    override val windSpeed: Double,
+    @ColumnInfo(name = "aqi_index")
+    override val airQuality: Double
 
 ): UnitSpecificCurrentWeatherEntry
