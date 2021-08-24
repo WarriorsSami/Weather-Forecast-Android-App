@@ -17,5 +17,4 @@ interface UnitSpecificCurrentWeatherEntry {
     val windSpeed: Double
     val conditionText: String
     val conditionIconUrl: String
-    val airQuality: Double
 }
