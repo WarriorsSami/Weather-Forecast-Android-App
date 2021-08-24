@@ -19,7 +19,6 @@ import com.google.android.gms.location.LocationResult
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 import org.kodein.di.generic.instance
-import java.util.jar.Manifest
 
 
 const val MY_PERMISSION_ACCESS_COARSE_LOCATION = 1

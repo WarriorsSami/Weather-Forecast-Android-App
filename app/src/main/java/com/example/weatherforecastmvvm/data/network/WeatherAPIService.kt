@@ -12,17 +12,18 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-const val API_KEY = "d7b17cbf1684265339176c1f17c0fa06"
-const val BASE_URL = "http://api.weatherstack.com/"
+const val API_KEY = "e29e3a1332bf4d95a6a104221211807"
+const val BASE_URL = "http://api.weatherapi.com/v1/"
+const val AQI = "yes"
 
 // Request URI
-// http://api.weatherstack.com/current?access_key=d7b17cbf1684265339176c1f17c0fa06&query=Calafat&lang=en
+// http://api.weatherapi.com/v1/current.json?key=e29e3a1332bf4d95a6a104221211807&q=Calafat&aqi=yes&lang=en
 
 interface WeatherStackAPIService {
 
-    @GET("current")
+    @GET("current.json")
     fun getCurrentWeatherAsync(
-        @Query("query") location: String,
+        @Query("q") location: String,
         @Query("lang") languageCode: String = "en"
     ): Deferred<CurrentWeatherResponse>
 
@@ -34,7 +35,8 @@ interface WeatherStackAPIService {
                 val url = chain.request()
                     .url()
                     .newBuilder()
-                    .addQueryParameter("access_key", API_KEY)
+                    .addQueryParameter("key", API_KEY)
+                    .addQueryParameter("aqi", AQI)
                     .build()
 
                 val request = chain.request()
