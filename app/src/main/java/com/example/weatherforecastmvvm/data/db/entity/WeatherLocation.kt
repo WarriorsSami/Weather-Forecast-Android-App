@@ -22,10 +22,8 @@ data class WeatherLocation(
     val lon: Double,
     val name: String,
     val region: String,
-    @SerializedName("timezone_id")
-    val timezoneId: String,
-    @SerializedName("utc_offset")
-    val utcOffset: String
+    @SerializedName("tz_id")
+    val timezoneId: String
 ) {
     @PrimaryKey(autoGenerate = false)
     var id: Int = WEATHER_LOCATION_ID
