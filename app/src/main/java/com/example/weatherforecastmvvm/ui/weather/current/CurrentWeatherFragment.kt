@@ -75,7 +75,7 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
             val imageView = activity?.findViewById<ImageView>(R.id.imageView_condition_icon)
             if (imageView != null) {
                 GlideApp.with(this@CurrentWeatherFragment)
-                    .load(it.conditionIconUrl.first())
+                    .load("http:" + it.conditionIconUrl)
                     .into(imageView)
             }
         })
