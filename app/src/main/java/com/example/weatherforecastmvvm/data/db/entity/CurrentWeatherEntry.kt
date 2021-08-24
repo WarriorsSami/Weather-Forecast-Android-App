@@ -40,11 +40,7 @@ data class CurrentWeatherEntry(
     val visibility: Double,
     @SerializedName("vis_miles")
     val visibilityImperial: Double,
-    /*@SerializedName("weather_descriptions")
-    val weatherDescriptions: List<String>,
-    @SerializedName("weather_icons")
-    val weatherIcons: List<String>,*/
-    @Embedded(prefix = "weather_")
+    @Embedded(prefix = "condition_")
     val condition: Condition,
     @SerializedName("wind_dir")
     val windDir: String,

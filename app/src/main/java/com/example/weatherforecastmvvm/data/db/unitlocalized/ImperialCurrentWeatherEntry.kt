@@ -23,10 +23,10 @@ data class ImperialCurrentWeatherEntry(
     override val uvIndex: Double,
     @ColumnInfo(name = "visibilityImperial") // add imperial version (miles)
     override val visibility: Double,
-    @ColumnInfo(name = "weatherDescriptions")
-    override val weatherDescriptions: List<String>,
-    @ColumnInfo(name = "weatherIcons")
-    override val weatherIcons: List<String>,
+    @ColumnInfo(name = "condition_text")
+    override val conditionText: String,
+    @ColumnInfo(name = "condition_icon")
+    override val conditionIconUrl: String,
     @ColumnInfo(name = "windDir")
     override val windDirection: String,
     @ColumnInfo(name = "windSpeedImperial") // add imperial version (mph)
