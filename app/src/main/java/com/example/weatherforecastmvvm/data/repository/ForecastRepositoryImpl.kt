@@ -43,16 +43,7 @@ class ForecastRepositoryImpl(
     @DelicateCoroutinesApi
     private fun persistFetchedCurrentWeather(fetchedCurrentWeather: CurrentWeatherResponse) {
         GlobalScope.launch(Dispatchers.IO) {
-            val weatherImperial = convertToImperial(fetchedCurrentWeather.currentWeatherEntry)
             currentWeatherDAO.upsert(fetchedCurrentWeather.currentWeatherEntry)
-            currentWeatherDAO.updateWeatherImperial(
-                weatherImperial.feelsLike,
-                weatherImperial.precipitation,
-                weatherImperial.pressure,
-                weatherImperial.temperature,
-                weatherImperial.visibility,
-                weatherImperial.windSpeed
-            )
             weatherLocationDAO.upsert(fetchedCurrentWeather.location)
         }
     }
