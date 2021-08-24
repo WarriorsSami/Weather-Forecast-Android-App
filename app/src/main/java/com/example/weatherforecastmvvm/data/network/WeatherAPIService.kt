@@ -14,12 +14,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 const val API_KEY = "e29e3a1332bf4d95a6a104221211807"
 const val BASE_URL = "http://api.weatherapi.com/v1/"
-const val AQI = "yes"
+const val AQI = "no"
 
 // Request URI
 // http://api.weatherapi.com/v1/current.json?key=e29e3a1332bf4d95a6a104221211807&q=Calafat&aqi=yes&lang=en
 
-interface WeatherStackAPIService {
+interface WeatherAPIService {
 
     @GET("current.json")
     fun getCurrentWeatherAsync(
@@ -30,13 +30,13 @@ interface WeatherStackAPIService {
     companion object {
         operator fun invoke(
             connectivityInterceptor: ConnectivityInterceptor
-        ): WeatherStackAPIService {
+        ): WeatherAPIService {
             val requestInterceptor = Interceptor { chain ->
                 val url = chain.request()
                     .url()
                     .newBuilder()
                     .addQueryParameter("key", API_KEY)
-                    .addQueryParameter("aqi", AQI)
+                    //.addQueryParameter("aqi", AQI)
                     .build()
 
                 val request = chain.request()
@@ -58,7 +58,7 @@ interface WeatherStackAPIService {
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(WeatherStackAPIService::class.java)
+                .create(WeatherAPIService::class.java)
         }
     }
 }

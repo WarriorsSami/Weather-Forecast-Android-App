@@ -70,12 +70,12 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
             updateVisibility(it.visibility)
             updateWind(it.windDirection, it.windSpeed)
             updateObservationTime(it.observationTime)
-            updateWeatherDescription(it.weatherDescriptions)
+            updateWeatherDescription(it.conditionText)
 
             val imageView = activity?.findViewById<ImageView>(R.id.imageView_condition_icon)
             if (imageView != null) {
                 GlideApp.with(this@CurrentWeatherFragment)
-                    .load(it.weatherIcons.first())
+                    .load(it.conditionIconUrl.first())
                     .into(imageView)
             }
         })
@@ -121,7 +121,7 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
     }
 
     private fun updatePressure(pressure: Double) {
-        val unitAbbreviation = chooseUnitAbbreviation("mmHg", "PSI")
+        val unitAbbreviation = chooseUnitAbbreviation("mb", "in")
 
         val pressureView = activity?.findViewById<TextView>(R.id.textView_pressure)
         pressureView?.text = "Pressure: $pressure $unitAbbreviation"
@@ -140,7 +140,7 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
     }
 
     private fun updateWind(windDirection: String, windSpeed: Double) {
-        val unitAbbreviation = chooseUnitAbbreviation("km/h", "mph")
+        val unitAbbreviation = chooseUnitAbbreviation("kph", "mph")
 
         val windView = activity?.findViewById<TextView>(R.id.textView_wind)
         windView?.text = "Wind: $windDirection, $windSpeed $unitAbbreviation"
@@ -151,10 +151,10 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
         observationTimeView?.text = "Observation Time: $time UTC±0"
     }
 
-    private fun updateWeatherDescription(description: List<String>) {
-        val weatherDescriptions = description.joinToString(prefix = "", postfix = "", separator = ", ")
+    private fun updateWeatherDescription(description: String) {
+        //val weatherDescriptions = description.joinToString(prefix = "", postfix = "", separator = ", ")
 
         val weatherDescriptionView = activity?.findViewById<TextView>(R.id.textView_condition)
-        weatherDescriptionView?.text = "$weatherDescriptions"
+        weatherDescriptionView?.text = "$description"
     }
 }

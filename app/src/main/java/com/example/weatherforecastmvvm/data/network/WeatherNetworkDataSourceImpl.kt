@@ -7,7 +7,7 @@ import com.example.weatherforecastmvvm.data.network.response.CurrentWeatherRespo
 import com.example.weatherforecastmvvm.internal.NoInternetConnectionException
 
 class WeatherNetworkDataSourceImpl (
-    private val weatherStackAPIService: WeatherStackAPIService
+    private val WeatherAPIService: WeatherAPIService
 ) : WeatherNetworkDataSource {
 
     private val _downloadedCurrentWeather = MutableLiveData<CurrentWeatherResponse>()
@@ -16,7 +16,7 @@ class WeatherNetworkDataSourceImpl (
 
     override suspend fun fetchCurrentWeather(location: String, languageCode: String) {
         try {
-            val fetchedCurrentWeather = weatherStackAPIService
+            val fetchedCurrentWeather = WeatherAPIService
                 .getCurrentWeatherAsync(location, languageCode)
                 .await()
             _downloadedCurrentWeather.postValue(fetchedCurrentWeather)
