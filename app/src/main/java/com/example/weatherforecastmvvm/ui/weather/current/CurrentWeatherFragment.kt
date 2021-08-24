@@ -148,12 +148,10 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
 
     private fun updateObservationTime(time: String) {
         val observationTimeView = activity?.findViewById<TextView>(R.id.textView_observation_time)
-        observationTimeView?.text = "Observation Time: $time UTC±0"
+        observationTimeView?.text = "Observation Time: $time"
     }
 
     private fun updateWeatherDescription(description: String) {
-        //val weatherDescriptions = description.joinToString(prefix = "", postfix = "", separator = ", ")
-
         val weatherDescriptionView = activity?.findViewById<TextView>(R.id.textView_condition)
         weatherDescriptionView?.text = "$description"
     }
