@@ -1,6 +1,15 @@
 # Weather-Forecast-Android-App
-Weather Forecast Mobile App for Android implemented via Koltin dedicated packages
-
+Weather Forecast Mobile App for Android implemented via Koltin dedicated packages:
+- Gson
+- Retrofit
+- Kodein
+- Room
+- Kotlinx Coroutines
+- Lifecycle Livedata and ViewModel
+- Gms location provider
+- Constraintlayout
+- Material Theme
+- Glide
 
 ![](ezgif.com-gif-maker.gif)
 
