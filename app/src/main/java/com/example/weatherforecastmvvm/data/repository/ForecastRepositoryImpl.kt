@@ -1,8 +1,8 @@
 package com.example.weatherforecastmvvm.data.repository
 
 import androidx.lifecycle.LiveData
-import com.example.weatherforecastmvvm.data.db.CurrentWeatherDAO
-import com.example.weatherforecastmvvm.data.db.WeatherLocationDAO
+import com.example.weatherforecastmvvm.data.db.dao.CurrentWeatherDAO
+import com.example.weatherforecastmvvm.data.db.dao.WeatherLocationDAO
 import com.example.weatherforecastmvvm.data.db.entity.WeatherLocation
 import com.example.weatherforecastmvvm.data.db.unitlocalized.current.UnitSpecificCurrentWeatherEntry
 import com.example.weatherforecastmvvm.data.network.WeatherNetworkDataSource
