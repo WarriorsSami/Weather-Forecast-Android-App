@@ -1,4 +1,4 @@
-package com.example.weatherforecastmvvm.data.db.unitlocalized
+package com.example.weatherforecastmvvm.data.db.unitlocalized.current
 
 import com.google.gson.annotations.SerializedName
 
