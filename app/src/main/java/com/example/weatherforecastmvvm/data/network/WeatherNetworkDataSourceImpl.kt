@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.weatherforecastmvvm.data.network.response.CurrentWeatherResponse
 import com.example.weatherforecastmvvm.internal.NoInternetConnectionException
+import retrofit2.HttpException
 
 class WeatherNetworkDataSourceImpl (
     private val WeatherAPIService: WeatherAPIService
@@ -22,6 +23,8 @@ class WeatherNetworkDataSourceImpl (
             _downloadedCurrentWeather.postValue(fetchedCurrentWeather)
         } catch(err: NoInternetConnectionException) {
             Log.e("Connectivity", "No internet connection", err)
+        } catch(err: HttpException) {
+            Log.e("HTTP", "400 Bad Request", err)
         }
     }
 }

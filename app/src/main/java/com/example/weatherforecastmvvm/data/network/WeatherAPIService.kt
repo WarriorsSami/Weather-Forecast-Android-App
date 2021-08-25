@@ -14,7 +14,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 const val API_KEY = "e29e3a1332bf4d95a6a104221211807"
 const val BASE_URL = "http://api.weatherapi.com/v1/"
-const val AQI = "no"
 
 // Request URI
 // http://api.weatherapi.com/v1/current.json?key=e29e3a1332bf4d95a6a104221211807&q=Calafat&aqi=yes&lang=en
@@ -36,7 +35,6 @@ interface WeatherAPIService {
                     .url()
                     .newBuilder()
                     .addQueryParameter("key", API_KEY)
-                    //.addQueryParameter("aqi", AQI)
                     .build()
 
                 val request = chain.request()
