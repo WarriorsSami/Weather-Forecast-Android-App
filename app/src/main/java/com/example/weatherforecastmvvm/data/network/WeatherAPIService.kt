@@ -2,6 +2,7 @@ package com.example.weatherforecastmvvm.data.network
 
 import com.example.weatherforecastmvvm.data.network.ConnectivityInterceptor
 import com.example.weatherforecastmvvm.data.network.response.CurrentWeatherResponse
+import com.example.weatherforecastmvvm.data.network.response.FutureWeatherResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -15,16 +16,27 @@ import retrofit2.converter.gson.GsonConverterFactory
 const val API_KEY = "e29e3a1332bf4d95a6a104221211807"
 const val BASE_URL = "http://api.weatherapi.com/v1/"
 
-// Request URI
-// http://api.weatherapi.com/v1/current.json?key=e29e3a1332bf4d95a6a104221211807&q=Calafat&aqi=yes&lang=en
 
 interface WeatherAPIService {
+
+    // Request URI - current weather
+    // http://api.weatherapi.com/v1/current.json?key=e29e3a1332bf4d95a6a104221211807&q=Calafat&lang=en
 
     @GET("current.json")
     fun getCurrentWeatherAsync(
         @Query("q") location: String,
         @Query("lang") languageCode: String = "en"
     ): Deferred<CurrentWeatherResponse>
+
+    // Request URI - future weather
+    // http://api.weatherapi.com/v1/forecast.json?key=e29e3a1332bf4d95a6a104221211807&q=Calafat&days=3&lang=en
+
+    @GET("forecast.json")
+    fun getFutureWeatherAsync(
+        @Query("q") location: String,
+        @Query("days") daysNumber: Int,
+        @Query("lang") languageCode: String = "en"
+    ): Deferred<FutureWeatherResponse>
 
     companion object {
         operator fun invoke(
