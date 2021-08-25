@@ -6,6 +6,6 @@ Weather Forecast Mobile App for Android implemented via Koltin dedicated package
 
 ## TODO List
 
-- [ ] fix **Unit System/Location is not updated in current session from shared preferences" bug
+- [ ] fix **Unit System/Location is not updated in current session from shared preferences** bug
 - [ ] add future forecast for 3 days hourly
 - [ ] add city name validation
