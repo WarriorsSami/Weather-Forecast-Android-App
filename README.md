@@ -17,3 +17,6 @@ Weather Forecast Mobile App for Android implemented via Koltin dedicated package
 ## TODO List
 - [ ] fix **Unit System/Location is not updated in current session from shared preferences** bug
 - [ ] add future forecast for 3 days hourly
+  - [x] room infrastructure
+  - [ ] view model
+  - [ ] ui (fragment + layouts)
