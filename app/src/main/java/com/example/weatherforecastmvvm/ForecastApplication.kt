@@ -43,7 +43,6 @@ class ForecastApplication: Application(), KodeinAware {
         bind() from provider { CurrentWeatherViewModelFactory(instance(), instance()) }
         bind() from provider { FutureListWeatherViewModelFactory(instance(), instance()) }
         bind() from provider { LocationServices.getFusedLocationProviderClient(instance<Context>()) }
-
     }
 
     override fun onCreate() {
