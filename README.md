@@ -19,4 +19,12 @@ Weather Forecast Mobile App for Android implemented via Koltin dedicated package
 - [ ] add future forecast for 3 days hourly
   - [x] room infrastructure
   - [ ] view model
+    - [x] list days
+    - [ ] list hours
+    - [ ] detail day
+    - [ ] detail hour
   - [ ] ui (fragment + layouts)
+    - [ ] list days
+    - [ ] list hours
+    - [ ] detail day
+    - [ ] detail hour
