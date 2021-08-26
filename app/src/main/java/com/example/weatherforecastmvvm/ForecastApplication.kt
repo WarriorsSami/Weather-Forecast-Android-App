@@ -11,6 +11,7 @@ import com.example.weatherforecastmvvm.data.provider.UnitSystemProviderImpl
 import com.example.weatherforecastmvvm.data.repository.ForecastRepository
 import com.example.weatherforecastmvvm.data.repository.ForecastRepositoryImpl
 import com.example.weatherforecastmvvm.ui.weather.current.CurrentWeatherViewModelFactory
+import com.example.weatherforecastmvvm.ui.weather.future.list.FutureListWeatherViewModelFactory
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.jakewharton.threetenabp.AndroidThreeTen
@@ -31,14 +32,16 @@ class ForecastApplication: Application(), KodeinAware {
         bind() from singleton { ForecastDatabase(instance()) }
         bind() from singleton { instance<ForecastDatabase>().currentWeatherDAO() }
         bind() from singleton { instance<ForecastDatabase>().weatherLocationDAO() }
+        bind() from singleton { instance<ForecastDatabase>().futureWeatherDAO() }
 
         bind<ConnectivityInterceptor>() with singleton { ConnectivityInterceptorImpl(instance()) }
         bind() from singleton { WeatherAPIService(instance()) }
         bind<WeatherNetworkDataSource>() with singleton { WeatherNetworkDataSourceImpl(instance()) }
         bind<LocationProvider>() with singleton { LocationProviderImpl(instance(), instance()) }
-        bind<ForecastRepository>() with singleton { ForecastRepositoryImpl(instance(), instance(), instance(), instance()) }
+        bind<ForecastRepository>() with singleton { ForecastRepositoryImpl(instance(), instance(), instance(), instance(), instance()) }
         bind<UnitSystemProvider>() with singleton { UnitSystemProviderImpl(instance()) }
         bind() from provider { CurrentWeatherViewModelFactory(instance(), instance()) }
+        bind() from provider { FutureListWeatherViewModelFactory(instance(), instance()) }
         bind() from provider { LocationServices.getFusedLocationProviderClient(instance<Context>()) }
 
     }
