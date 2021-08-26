@@ -1,4 +1,4 @@
-package com.example.weatherforecastmvvm.data.db
+package com.example.weatherforecastmvvm.data.db.converter
 
 import androidx.room.TypeConverter
 import org.threeten.bp.LocalDate

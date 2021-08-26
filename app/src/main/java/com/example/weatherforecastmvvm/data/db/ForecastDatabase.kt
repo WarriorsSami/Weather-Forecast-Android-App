@@ -2,6 +2,8 @@ package com.example.weatherforecastmvvm.data.db
 
 import android.content.Context
 import androidx.room.*
+import com.example.weatherforecastmvvm.data.db.converter.HourConverter
+import com.example.weatherforecastmvvm.data.db.converter.LocalDateConverter
 import com.example.weatherforecastmvvm.data.db.dao.CurrentWeatherDAO
 import com.example.weatherforecastmvvm.data.db.dao.FutureWeatherDAO
 import com.example.weatherforecastmvvm.data.db.dao.WeatherLocationDAO
@@ -16,7 +18,7 @@ import com.example.weatherforecastmvvm.data.db.entity.WeatherLocation
                 FutureWeatherEntry::class],
     version = 1
 )
-@TypeConverters(LocalDateConverter::class)
+@TypeConverters(LocalDateConverter::class, HourConverter::class)
 abstract class ForecastDatabase: RoomDatabase() {
     abstract fun currentWeatherDAO(): CurrentWeatherDAO
     abstract fun futureWeatherDAO(): FutureWeatherDAO
