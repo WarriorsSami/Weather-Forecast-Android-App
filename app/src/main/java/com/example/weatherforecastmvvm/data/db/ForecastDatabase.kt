@@ -6,11 +6,14 @@ import com.example.weatherforecastmvvm.data.db.dao.CurrentWeatherDAO
 import com.example.weatherforecastmvvm.data.db.dao.FutureWeatherDAO
 import com.example.weatherforecastmvvm.data.db.dao.WeatherLocationDAO
 import com.example.weatherforecastmvvm.data.db.entity.CurrentWeatherEntry
+import com.example.weatherforecastmvvm.data.db.entity.FutureWeatherEntry
 import com.example.weatherforecastmvvm.data.db.entity.WeatherLocation
 
 
 @Database (
-    entities = [CurrentWeatherEntry::class, WeatherLocation::class],
+    entities = [CurrentWeatherEntry::class,
+                WeatherLocation::class,
+                FutureWeatherEntry::class],
     version = 1
 )
 @TypeConverters(LocalDateConverter::class)
