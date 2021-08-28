@@ -7,7 +7,7 @@
     <item
         android:id="@+id/futureListWeatherFragment"
         android:icon="@drawable/ic_calendar_week"
-        android:title="@string/_7_days"/>
+        android:title="@string/_3_days"/>
     <item
         android:id="@+id/settingsFragment"
         android:icon="@drawable/ic_settings"

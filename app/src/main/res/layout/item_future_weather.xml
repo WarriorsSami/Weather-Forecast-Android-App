@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:minHeight="120dp">
+        android:minHeight="160dp">
 
         <TextView
             android:id="@+id/textView_date"
@@ -24,10 +24,10 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.975"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.219"
+            app:layout_constraintVertical_bias="0.368"
             tools:text="1.1.2000" />
 
         <TextView
@@ -40,10 +40,10 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.028"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.238"
+            app:layout_constraintVertical_bias="0.28"
             tools:text="25.0°C" />
 
         <TextView
@@ -58,10 +58,10 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.024"
+            app:layout_constraintHorizontal_bias="0.087"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.8"
+            app:layout_constraintVertical_bias="0.758"
             tools:text="Clear" />
 
         <ImageView
@@ -74,10 +74,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.072"
             app:layout_constraintStart_toEndOf="@+id/textView_temperature"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.156"
+            app:layout_constraintVertical_bias="0.175"
             app:layout_constraintWidth_percent="0.15"
             tools:src="@drawable/ic_weather_sunny"
             tools:tint="#f9a920" />

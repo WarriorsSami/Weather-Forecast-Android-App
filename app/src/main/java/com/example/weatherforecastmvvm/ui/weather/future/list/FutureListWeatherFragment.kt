@@ -5,11 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weatherforecastmvvm.R
+import com.example.weatherforecastmvvm.data.db.unitlocalized.future.UnitSpecificSimpleFutureWeatherEntry
 import com.example.weatherforecastmvvm.ui.base.ScopedFragment
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.future_list_weather_fragment.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,11 +37,13 @@ class FutureListWeatherFragment : ScopedFragment(), KodeinAware {
         return inflater.inflate(R.layout.future_list_weather_fragment, container, false)
     }
 
+    @DelicateCoroutinesApi
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(FutureListWeatherViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        bindUI()
     }
 
     @DelicateCoroutinesApi
@@ -56,6 +64,7 @@ class FutureListWeatherFragment : ScopedFragment(), KodeinAware {
             groupLoading?.visibility = View.GONE
 
             updateDateTo3DaySpan()
+            initRecyclerViews(weatherEntries.toFutureWeatherItems())
         })
     }
 
@@ -65,5 +74,26 @@ class FutureListWeatherFragment : ScopedFragment(), KodeinAware {
 
     private fun updateDateTo3DaySpan() {
         (activity as? AppCompatActivity)?.supportActionBar?.subtitle = "Next 3 days"
+    }
+
+    private fun List<UnitSpecificSimpleFutureWeatherEntry>.toFutureWeatherItems(): List<FutureWeatherItem> {
+        return this.map {
+            FutureWeatherItem(it)
+        }
+    }
+
+    private fun initRecyclerViews(items: List<FutureWeatherItem>) {
+        val groupAdapter = GroupAdapter<ViewHolder>().apply {
+            addAll(items)
+        }
+
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(this@FutureListWeatherFragment.context)
+            adapter = groupAdapter
+        }
+
+        groupAdapter.setOnItemClickListener { item, view ->
+            Toast.makeText(this@FutureListWeatherFragment.context, "Clicked", Toast.LENGTH_SHORT).show()
+        }
     }
 }
