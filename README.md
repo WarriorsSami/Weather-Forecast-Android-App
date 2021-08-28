@@ -24,7 +24,7 @@ Weather Forecast Mobile App for Android implemented via Koltin dedicated package
     - [ ] detail day
     - [ ] detail hour
   - [ ] ui (fragment + layouts)
-    - [ ] list days
+    - [x] list days
     - [ ] list hours
     - [ ] detail day
     - [ ] detail hour
