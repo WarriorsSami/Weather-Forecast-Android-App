@@ -8,7 +8,7 @@ Weather Forecast Mobile App for Android implemented via Koltin dedicated package
 - Kotlinx Coroutines
 - Lifecycle Livedata and ViewModel
 - Gms location provider
-- Constraintlayout
+- ConstraintLayout
 - Material Theme
 - Glide
 
