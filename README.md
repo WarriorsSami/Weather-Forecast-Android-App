@@ -21,10 +21,10 @@ Weather Forecast Mobile App for Android implemented via Koltin dedicated package
   - [ ] view model
     - [x] list days
     - [ ] list hours
-    - [ ] detail day
+    - [x] detail day
     - [ ] detail hour
   - [ ] ui (fragment + layouts)
     - [x] list days
     - [ ] list hours
-    - [ ] detail day
+    - [x] detail day
     - [ ] detail hour
