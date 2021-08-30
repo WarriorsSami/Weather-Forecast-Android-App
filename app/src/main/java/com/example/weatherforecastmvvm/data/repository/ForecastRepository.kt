@@ -3,7 +3,7 @@ package com.example.weatherforecastmvvm.data.repository
 import androidx.lifecycle.LiveData
 import com.example.weatherforecastmvvm.data.db.entity.WeatherLocation
 import com.example.weatherforecastmvvm.data.db.unitlocalized.current.UnitSpecificCurrentWeatherEntry
-import com.example.weatherforecastmvvm.data.db.unitlocalized.future.UnitSpecificSimpleFutureWeatherEntry
+import com.example.weatherforecastmvvm.data.db.unitlocalized.future.list.UnitSpecificSimpleFutureWeatherEntry
 import org.threeten.bp.LocalDate
 
 interface ForecastRepository {

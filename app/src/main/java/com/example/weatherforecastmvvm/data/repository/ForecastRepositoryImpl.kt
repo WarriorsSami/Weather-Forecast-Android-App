@@ -6,7 +6,7 @@ import com.example.weatherforecastmvvm.data.db.dao.FutureWeatherDAO
 import com.example.weatherforecastmvvm.data.db.dao.WeatherLocationDAO
 import com.example.weatherforecastmvvm.data.db.entity.WeatherLocation
 import com.example.weatherforecastmvvm.data.db.unitlocalized.current.UnitSpecificCurrentWeatherEntry
-import com.example.weatherforecastmvvm.data.db.unitlocalized.future.UnitSpecificSimpleFutureWeatherEntry
+import com.example.weatherforecastmvvm.data.db.unitlocalized.future.list.UnitSpecificSimpleFutureWeatherEntry
 import com.example.weatherforecastmvvm.data.network.FUTURE_WEATHER_DAYS
 import com.example.weatherforecastmvvm.data.network.WeatherNetworkDataSource
 import com.example.weatherforecastmvvm.data.network.response.CurrentWeatherResponse
