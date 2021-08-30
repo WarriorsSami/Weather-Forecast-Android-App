@@ -12,7 +12,7 @@ Weather Forecast Mobile App for Android implemented via Koltin dedicated package
 - Material Theme
 - Glide
 
-![](ezgif.com-gif-maker.gif)
+![](mvvm1.gif)
 
 ## TODO List
 - [ ] fix **Unit System/Location is not updated in current session from shared preferences** bug
