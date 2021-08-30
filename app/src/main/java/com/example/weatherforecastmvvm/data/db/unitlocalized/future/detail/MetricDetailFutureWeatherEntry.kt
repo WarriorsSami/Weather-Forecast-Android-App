@@ -22,7 +22,7 @@ class MetricDetailFutureWeatherEntry(
         override val avgVisibility: Double,
         @ColumnInfo(name = "dailyChanceOfRain")
         override val dailyChanceOfRain: Int,
-        @ColumnInfo(name = "dailyChangeOfSnow")
+        @ColumnInfo(name = "dailyChanceOfSnow")
         override val dailyChanceOfSnow: Int,
         @ColumnInfo(name = "maxwindKph")
         override val maxWindSpeed: Double,

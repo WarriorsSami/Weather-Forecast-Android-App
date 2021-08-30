@@ -101,7 +101,7 @@ class FutureListWeatherFragment : ScopedFragment(), KodeinAware {
 
     private fun showWeatherDetail(date: LocalDate, view: View) {
         val dateString = LocalDateConverter.dateToString(date)
-        val actionDetail = FutureListWeatherFragmentDirections.actionDetail(dateString)
+        val actionDetail = FutureListWeatherFragmentDirections.actionDetail(dateString.toString())
         Navigation.findNavController(view).navigate(actionDetail)
     }
 }

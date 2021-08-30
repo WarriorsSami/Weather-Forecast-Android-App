@@ -22,7 +22,7 @@ class ImperialDetailFutureWeatherEntry(
         override val avgVisibility: Double,
         @ColumnInfo(name = "dailyChanceOfRain")
         override val dailyChanceOfRain: Int,
-        @ColumnInfo(name = "dailyChangeOfSnow")
+        @ColumnInfo(name = "dailyChanceOfSnow")
         override val dailyChanceOfSnow: Int,
         @ColumnInfo(name = "maxwindMph")
         override val maxWindSpeed: Double,
