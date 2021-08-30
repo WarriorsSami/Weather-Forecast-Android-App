@@ -5,3 +5,4 @@ import java.lang.Exception
 
 class NoInternetConnectionException: IOException()
 class LocationPermissionNotGrantedException: Exception()
+class DateNotFoundException: Exception()

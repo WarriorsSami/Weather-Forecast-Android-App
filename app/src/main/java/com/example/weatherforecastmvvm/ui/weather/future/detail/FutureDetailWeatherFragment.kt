@@ -7,12 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.weatherforecastmvvm.R
+import com.example.weatherforecastmvvm.data.db.converter.LocalDateConverter
+import com.example.weatherforecastmvvm.internal.DateNotFoundException
+import com.example.weatherforecastmvvm.ui.base.ScopedFragment
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
+import org.kodein.di.generic.factory
+import org.threeten.bp.LocalDate
 
-class FutureDetailWeatherFragment : Fragment() {
+class FutureDetailWeatherFragment : ScopedFragment(), KodeinAware {
 
-    companion object {
-        fun newInstance() = FutureDetailWeatherFragment()
-    }
+    override val kodein by closestKodein()
+    private val viewModelFactoryInstanceFactory:
+            ((LocalDate) -> FutureDetailWeatherViewModelFactory) by factory()
 
     private lateinit var viewModel: FutureDetailWeatherViewModel
 
@@ -25,8 +35,17 @@ class FutureDetailWeatherFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FutureDetailWeatherViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        val safeArgs = arguments?.let { FutureDetailWeatherFragmentArgs.fromBundle(it) }
+        val date = LocalDateConverter.stringToDate(safeArgs?.dateString) ?: throw DateNotFoundException()
+
+        viewModel = ViewModelProvider(this, viewModelFactoryInstanceFactory(date))
+                .get(FutureDetailWeatherViewModel::class.java)
+
+        bindUI()
     }
 
+    private fun bindUI() = launch(Dispatchers.Main) {
+
+    }
 }
