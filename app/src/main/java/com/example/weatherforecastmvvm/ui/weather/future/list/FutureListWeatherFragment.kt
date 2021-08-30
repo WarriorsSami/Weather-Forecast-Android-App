@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weatherforecastmvvm.R
+import com.example.weatherforecastmvvm.data.db.converter.LocalDateConverter
 import com.example.weatherforecastmvvm.data.db.unitlocalized.future.list.UnitSpecificSimpleFutureWeatherEntry
 import com.example.weatherforecastmvvm.ui.base.ScopedFragment
 import com.xwray.groupie.GroupAdapter
@@ -21,6 +22,7 @@ import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
+import org.threeten.bp.LocalDate
 
 class FutureListWeatherFragment : ScopedFragment(), KodeinAware {
 
@@ -91,7 +93,15 @@ class FutureListWeatherFragment : ScopedFragment(), KodeinAware {
         }
 
         groupAdapter.setOnItemClickListener { item, view ->
-            Toast.makeText(this@FutureListWeatherFragment.context, "Clicked", Toast.LENGTH_SHORT).show()
+            (item as? FutureWeatherItem)?.let {
+                showWeatherDetail(it.weatherEntry.date, view)
+            }
         }
+    }
+
+    private fun showWeatherDetail(date: LocalDate, view: View) {
+        val dateString = LocalDateConverter.dateToString(date)
+        val actionDetail = FutureListWeatherFragmentDirections.actionDetail(dateString)
+        Navigation.findNavController(view).navigate(actionDetail)
     }
 }

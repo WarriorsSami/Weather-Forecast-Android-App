@@ -11,7 +11,7 @@ import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.FormatStyle
 
 class FutureWeatherItem(
-    private val weatherEntry: UnitSpecificSimpleFutureWeatherEntry
+    val weatherEntry: UnitSpecificSimpleFutureWeatherEntry
 ): Item() {
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
