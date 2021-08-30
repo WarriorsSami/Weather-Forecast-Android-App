@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.weatherforecastmvvm.R
 import com.example.weatherforecastmvvm.internal.glide.GlideApp
 import com.example.weatherforecastmvvm.ui.base.ScopedFragment
+import kotlinx.android.synthetic.main.current_weather_fragment.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
@@ -57,8 +58,7 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
         currentWeather.observe(viewLifecycleOwner, Observer {
             if (it == null) return@Observer
 
-            val groupLoading = activity?.findViewById<Group>(R.id.group_loading)
-            groupLoading?.visibility = View.GONE
+            group_loading?.visibility = View.GONE
 
             updateDateToToday()
             updateTemperatures(it.temperature, it.feelsLike)
@@ -72,11 +72,10 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
             updateObservationTime(it.observationTime)
             updateWeatherDescription(it.conditionText)
 
-            val imageView = activity?.findViewById<ImageView>(R.id.imageView_condition_icon)
-            if (imageView != null) {
+            if (imageView_condition_icon != null) {
                 GlideApp.with(this@CurrentWeatherFragment)
                     .load("http:" + it.conditionIconUrl)
-                    .into(imageView)
+                    .into(imageView_condition_icon)
             }
         })
     }
@@ -96,63 +95,51 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
     private fun updateTemperatures(temperature: Double, feelsLike: Double) {
         val unitAbbreviation = chooseUnitAbbreviation("°C", "°F")
 
-        val temperatureView = activity?.findViewById<TextView>(R.id.textView_temperature)
-        temperatureView?.text = "$temperature$unitAbbreviation"
-
-        val feelsLikeView = activity?.findViewById<TextView>(R.id.textView_feels_like_temperature)
-        feelsLikeView?.text = "Feels like: $feelsLike$unitAbbreviation"
+        textView_temperature?.text = "$temperature$unitAbbreviation"
+        textView_feels_like_temperature?.text = "Feels like: $feelsLike$unitAbbreviation"
     }
 
     private fun updatePrecipitation(precipitationVolume: Double) {
-        val unitAbreviation = chooseUnitAbbreviation("mm", "in")
+        val unitAbbreviation = chooseUnitAbbreviation("mm", "in")
 
-        val precipitationView = activity?.findViewById<TextView>(R.id.textView_precipitation)
-        precipitationView?.text = "Precipitation: $precipitationVolume $unitAbreviation"
+        textView_precipitation?.text = "Precipitation: $precipitationVolume $unitAbbreviation"
     }
 
     private fun updateCloudCover(cloudCoverPercentage: Double) {
-        val cloudCoverView = activity?.findViewById<TextView>(R.id.textView_cloud_cover)
-        cloudCoverView?.text = "Cloud Cover: $cloudCoverPercentage%"
+        textView_cloud_cover?.text = "Cloud Cover: $cloudCoverPercentage%"
     }
 
     private fun updateHumidity(humidityPercentage: Double) {
-        val humidityView = activity?.findViewById<TextView>(R.id.textView_humidity)
-        humidityView?.text = "Humidity: $humidityPercentage%"
+        textView_humidity?.text = "Humidity: $humidityPercentage%"
     }
 
     private fun updatePressure(pressure: Double) {
         val unitAbbreviation = chooseUnitAbbreviation("mb", "in")
 
-        val pressureView = activity?.findViewById<TextView>(R.id.textView_pressure)
-        pressureView?.text = "Pressure: $pressure $unitAbbreviation"
+        textView_pressure?.text = "Pressure: $pressure $unitAbbreviation"
     }
 
     private fun updateUVIndex(uvIndex: Double) {
-        val uvIndexView = activity?.findViewById<TextView>(R.id.textView_uv_index)
-        uvIndexView?.text = "UV Index: $uvIndex"
+        textView_uv_index?.text = "UV Index: $uvIndex"
     }
 
     private fun updateVisibility(visibility: Double) {
         val unitAbbreviation = chooseUnitAbbreviation("km", "miles")
 
-        val visibilityView = activity?.findViewById<TextView>(R.id.textView_visibility)
-        visibilityView?.text = "Visibility: $visibility $unitAbbreviation"
+        textView_visibility?.text = "Visibility: $visibility $unitAbbreviation"
     }
 
     private fun updateWind(windDirection: String, windSpeed: Double) {
         val unitAbbreviation = chooseUnitAbbreviation("kph", "mph")
 
-        val windView = activity?.findViewById<TextView>(R.id.textView_wind)
-        windView?.text = "Wind: $windDirection, $windSpeed $unitAbbreviation"
+        textView_wind?.text = "Wind: $windDirection, $windSpeed $unitAbbreviation"
     }
 
     private fun updateObservationTime(time: String) {
-        val observationTimeView = activity?.findViewById<TextView>(R.id.textView_observation_time)
-        observationTimeView?.text = "Observation Time: $time"
+        textView_observation_time?.text = "Observation Time: $time"
     }
 
     private fun updateWeatherDescription(description: String) {
-        val weatherDescriptionView = activity?.findViewById<TextView>(R.id.textView_condition)
-        weatherDescriptionView?.text = "$description"
+        textView_condition?.text = "$description"
     }
 }

@@ -60,8 +60,7 @@ class FutureListWeatherFragment : ScopedFragment(), KodeinAware {
         futureWeatherEntries.observe(viewLifecycleOwner, Observer { weatherEntries ->
             if (weatherEntries == null) return@Observer
 
-            val groupLoading = activity?.findViewById<Group>(R.id.group_loading)
-            groupLoading?.visibility = View.GONE
+            group_loading?.visibility = View.GONE
 
             updateDateTo3DaySpan()
             initRecyclerViews(weatherEntries.toFutureWeatherItems())
