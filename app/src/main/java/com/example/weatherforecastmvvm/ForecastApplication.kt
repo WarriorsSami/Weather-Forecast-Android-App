@@ -11,6 +11,7 @@ import com.example.weatherforecastmvvm.data.provider.UnitSystemProviderImpl
 import com.example.weatherforecastmvvm.data.repository.ForecastRepository
 import com.example.weatherforecastmvvm.data.repository.ForecastRepositoryImpl
 import com.example.weatherforecastmvvm.ui.weather.current.CurrentWeatherViewModelFactory
+import com.example.weatherforecastmvvm.ui.weather.future.detail.FutureDetailWeatherViewModelFactory
 import com.example.weatherforecastmvvm.ui.weather.future.list.FutureListWeatherViewModelFactory
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -19,10 +20,8 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
-import org.kodein.di.generic.provider
-import org.kodein.di.generic.singleton
+import org.kodein.di.generic.*
+import org.threeten.bp.LocalDate
 
 class ForecastApplication: Application(), KodeinAware {
     @DelicateCoroutinesApi
@@ -43,6 +42,7 @@ class ForecastApplication: Application(), KodeinAware {
         bind() from provider { CurrentWeatherViewModelFactory(instance(), instance()) }
         bind() from provider { FutureListWeatherViewModelFactory(instance(), instance()) }
         bind() from provider { LocationServices.getFusedLocationProviderClient(instance<Context>()) }
+        bind() from factory { detailDate: LocalDate -> FutureDetailWeatherViewModelFactory(detailDate, instance(), instance()) }
     }
 
     override fun onCreate() {
