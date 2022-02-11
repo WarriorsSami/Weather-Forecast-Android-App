@@ -12,6 +12,9 @@ Weather Forecast Mobile App for Android implemented via Kotlin dedicated package
 - Material Theme
 - Glide
 
+##### Reference tutorial: [Reso Coder Android Kotlin MVVM Architecture](https://github.com/ResoCoder/forecast-mvvm-android-kotlin)
+
+
 ![](mvvm3.gif)
 
 ## TODO List
